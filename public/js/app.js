@@ -126,8 +126,38 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'app'
+  name: 'app',
+  data: function data() {
+    return {
+      dropdowns: {
+        administracion: false,
+        equipos: false
+      }
+    };
+  },
+  //COMPONENT METHODS
+  methods: {
+    toggle: function toggle(menu) {
+      var _this = this;
+
+      if (_this.dropdowns[menu]) {
+        _this.dropdowns[menu] = false;
+      } else {
+        _this.dropdowns[menu] = true;
+      }
+    }
+  }
 });
 
 /***/ }),
@@ -178,7 +208,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.navbar-header[data-v-332fccf4]{\n  background: #656565;\n}\n\n\n", ""]);
+exports.push([module.i, "\n.navbar-header[data-v-332fccf4]{\n  background: #656565;\n}\n.main-menu.menu-dark .navigation > li.open > a[data-v-332fccf4]{\n  border-right: 4px solid #FFE529;\n}\n\n\n", ""]);
 
 // exports
 
@@ -1294,155 +1324,255 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0, false, false)
+  return _c("div", { attrs: { id: "app" } }, [
+    _vm._m(0, false, false),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass:
+          "main-menu menu-fixed menu-dark menu-accordion menu-shadow expanded",
+        attrs: { "data-scroll-to-active": "true" }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass:
+              "main-menu-content ps-container ps-theme-light ps-active-y"
+          },
+          [
+            _c(
+              "ul",
+              {
+                staticClass: "navigation navigation-main",
+                attrs: { "data-menu": "menu-navigation" }
+              },
+              [
+                _vm._m(1, false, false),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  {
+                    staticClass: "nav-item has-sub",
+                    class: { open: _vm.dropdowns.administracion },
+                    on: {
+                      click: function($event) {
+                        _vm.toggle("administracion")
+                      }
+                    }
+                  },
+                  [
+                    _vm._m(2, false, false),
+                    _vm._v(" "),
+                    _vm._m(3, false, false)
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  {
+                    staticClass: "nav-item has-sub",
+                    class: { open: _vm.dropdowns.equipos },
+                    on: {
+                      click: function($event) {
+                        _vm.toggle("equipos")
+                      }
+                    }
+                  },
+                  [
+                    _vm._m(4, false, false),
+                    _vm._v(" "),
+                    _vm._m(5, false, false)
+                  ]
+                )
+              ]
+            )
+          ]
+        )
+      ]
+    )
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { attrs: { id: "app" } }, [
-      _c(
-        "nav",
-        {
-          staticClass:
-            "header-navbar navbar-expand-md navbar navbar-with-menu navbar-without-dd-arrow fixed-top navbar-shadow navbar-semi-dark"
-        },
-        [
-          _c("div", { staticClass: "navbar-wrapper" }, [
-            _c("div", { staticClass: "navbar-header expanded" }, [
-              _c(
-                "ul",
-                { staticClass: "nav navbar-nav flex-row position-relative" },
-                [
-                  _c(
-                    "li",
-                    { staticClass: "nav-item mobile-menu d-md-none mr-auto" },
-                    [
-                      _c(
-                        "a",
-                        {
-                          staticClass:
-                            "nav-link nav-menu-main menu-toggle hidden-xs is-active",
-                          attrs: { href: "#" }
-                        },
-                        [_c("i", { staticClass: "ft-menu font-large-1" })]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("li", { staticClass: "nav-item mr-auto" }, [
+    return _c(
+      "nav",
+      {
+        staticClass:
+          "header-navbar navbar-expand-md navbar navbar-with-menu navbar-without-dd-arrow fixed-top navbar-shadow navbar-semi-dark"
+      },
+      [
+        _c("div", { staticClass: "navbar-wrapper" }, [
+          _c("div", { staticClass: "navbar-header expanded" }, [
+            _c(
+              "ul",
+              { staticClass: "nav navbar-nav flex-row position-relative" },
+              [
+                _c(
+                  "li",
+                  { staticClass: "nav-item mobile-menu d-md-none mr-auto" },
+                  [
                     _c(
                       "a",
                       {
-                        staticClass: "navbar-brand",
-                        attrs: { href: "index.html" }
+                        staticClass:
+                          "nav-link nav-menu-main menu-toggle hidden-xs is-active",
+                        attrs: { href: "#" }
                       },
-                      [
-                        _c("img", {
-                          staticClass: "brand-logo",
-                          attrs: {
-                            alt: "modern admin logo",
-                            src: "images/logo.png"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c("h3", { staticClass: "brand-text" }, [
-                          _vm._v("Inspección")
-                        ])
-                      ]
+                      [_c("i", { staticClass: "ft-menu font-large-1" })]
                     )
-                  ]),
-                  _vm._v(" "),
+                  ]
+                ),
+                _vm._v(" "),
+                _c("li", { staticClass: "nav-item mr-auto" }, [
                   _c(
-                    "li",
-                    { staticClass: "nav-item d-none d-md-block nav-toggle" },
+                    "a",
+                    {
+                      staticClass: "navbar-brand",
+                      attrs: { href: "index.html" }
+                    },
                     [
-                      _c(
-                        "a",
-                        {
-                          staticClass: "nav-link modern-nav-toggle pr-0",
-                          attrs: { "data-toggle": "collapse" }
-                        },
-                        [
-                          _c("i", {
-                            staticClass:
-                              "toggle-icon ft-toggle-right font-medium-3 white",
-                            attrs: { "data-ticon": "ft-toggle-right" }
-                          })
-                        ]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("li", { staticClass: "nav-item d-md-none" }, [
-                    _c(
-                      "a",
-                      {
-                        staticClass: "nav-link open-navbar-container",
+                      _c("img", {
+                        staticClass: "brand-logo",
                         attrs: {
-                          "data-toggle": "collapse",
-                          "data-target": "#navbar-mobile"
+                          alt: "modern admin logo",
+                          src: "images/logo.png"
                         }
-                      },
-                      [_c("i", { staticClass: "la la-ellipsis-v" })]
-                    )
-                  ])
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "navbar-container content" }, [
-              _c(
-                "div",
-                {
-                  staticClass: "collapse navbar-collapse",
-                  attrs: { id: "navbar-mobile" }
-                },
-                [
-                  _c(
-                    "ul",
-                    { staticClass: "nav navbar-nav mr-auto float-left" },
-                    [
-                      _c("li", { staticClass: "nav-item d-none d-md-block" }, [
-                        _c(
-                          "a",
-                          {
-                            staticClass: "nav-link nav-link-expand",
-                            attrs: { href: "#" }
-                          },
-                          [_c("i", { staticClass: "ficon ft-maximize" })]
-                        )
-                      ]),
+                      }),
                       _vm._v(" "),
-                      _c("li", { staticClass: "nav-item nav-search" }, [
-                        _c(
-                          "a",
-                          {
-                            staticClass: "nav-link nav-link-search",
-                            attrs: { href: "#" }
-                          },
-                          [_c("i", { staticClass: "ficon ft-search" })]
-                        ),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "search-input" }, [
-                          _c("input", {
-                            staticClass: "input",
-                            attrs: {
-                              type: "text",
-                              placeholder: "Explore Modern..."
-                            }
-                          })
-                        ])
+                      _c("h3", { staticClass: "brand-text" }, [
+                        _vm._v("Inspección")
                       ])
                     ]
                   )
-                ]
-              )
-            ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  { staticClass: "nav-item d-none d-md-block nav-toggle" },
+                  [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "nav-link modern-nav-toggle pr-0",
+                        attrs: { "data-toggle": "collapse" }
+                      },
+                      [
+                        _c("i", {
+                          staticClass:
+                            "toggle-icon ft-toggle-right font-medium-3 white",
+                          attrs: { "data-ticon": "ft-toggle-right" }
+                        })
+                      ]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c("li", { staticClass: "nav-item d-md-none" }, [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "nav-link open-navbar-container",
+                      attrs: {
+                        "data-toggle": "collapse",
+                        "data-target": "#navbar-mobile"
+                      }
+                    },
+                    [_c("i", { staticClass: "la la-ellipsis-v" })]
+                  )
+                ])
+              ]
+            )
           ])
-        ]
-      )
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "nav-item" }, [
+      _c("a", { attrs: { href: "#" } }, [
+        _c("i", { staticClass: "la la-home" }),
+        _c("span", { staticClass: "menu-title" }, [_vm._v("Escritorio")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "#" } }, [
+      _c("i", { staticClass: "la la-bank" }),
+      _c("span", { staticClass: "menu-title" }, [_vm._v("Administración")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("ul", { staticClass: "menu-content" }, [
+      _c("li", { staticClass: "is-shown" }, [
+        _c("a", { staticClass: "menu-item", attrs: { href: "#" } }, [
+          _vm._v("Empresas")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("li", { staticClass: "is-shown" }, [
+        _c("a", { staticClass: "menu-item", attrs: { href: "#" } }, [
+          _vm._v("Departamentos")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("li", { staticClass: "is-shown" }, [
+        _c("a", { staticClass: "menu-item", attrs: { href: "#" } }, [
+          _vm._v("Áreas de trabajo")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("li", { staticClass: "is-shown" }, [
+        _c("a", { staticClass: "menu-item", attrs: { href: "#" } }, [
+          _vm._v("Proyectos")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("li", { staticClass: "is-shown" }, [
+        _c("a", { staticClass: "menu-item", attrs: { href: "#" } }, [
+          _vm._v("Usuarios")
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "#" } }, [
+      _c("i", { staticClass: "la la-cubes" }),
+      _c("span", { staticClass: "menu-title" }, [_vm._v("Equipos / Productos")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("ul", { staticClass: "menu-content" }, [
+      _c("li", { staticClass: "is-shown" }, [
+        _c("a", { staticClass: "menu-item", attrs: { href: "#" } }, [
+          _vm._v("Consultar")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("li", { staticClass: "is-shown" }, [
+        _c("a", { staticClass: "menu-item", attrs: { href: "#" } }, [
+          _vm._v("Registro")
+        ])
+      ])
     ])
   }
 ]

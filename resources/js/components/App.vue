@@ -11,20 +11,30 @@
            <li class="nav-item d-md-none"><a class="nav-link open-navbar-container" data-toggle="collapse" data-target="#navbar-mobile"><i class="la la-ellipsis-v"></i></a></li>
          </ul>
        </div>
-       <div class="navbar-container content">
-         <div class="collapse navbar-collapse" id="navbar-mobile">
-           <ul class="nav navbar-nav mr-auto float-left">
-              <li class="nav-item d-none d-md-block"><a class="nav-link nav-link-expand" href="#"><i class="ficon ft-maximize"></i></a></li>
-              <li class="nav-item nav-search"><a class="nav-link nav-link-search" href="#"><i class="ficon ft-search"></i></a>
-                <div class="search-input">
-                  <input class="input" type="text" placeholder="Explore Modern...">
-                </div>
-              </li>
-            </ul>
-         </div>
-       </div>
       </div>
     </nav>
+    <div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow expanded" data-scroll-to-active="true">
+      <div class="main-menu-content ps-container ps-theme-light ps-active-y">
+        <ul class="navigation navigation-main" data-menu="menu-navigation">
+          <li class="nav-item"><a href="#"><i class="la la-home"></i><span class="menu-title" >Escritorio</span></a></li>
+          <li class="nav-item has-sub" :class="{ open: dropdowns.administracion }" @click="toggle('administracion')"><a href="#"><i class="la la-bank"></i><span class="menu-title" >Administración</span></a>
+            <ul class="menu-content" style="">
+              <li class="is-shown"><a href="#" class="menu-item" >Empresas</a></li>
+              <li class="is-shown"><a href="#" class="menu-item" >Departamentos</a></li>
+              <li class="is-shown"><a href="#" class="menu-item" >Áreas de trabajo</a></li>
+              <li class="is-shown"><a href="#" class="menu-item" >Proyectos</a></li>
+              <li class="is-shown"><a href="#" class="menu-item" >Usuarios</a></li>
+            </ul>
+          </li>
+          <li class="nav-item has-sub" :class="{ open: dropdowns.equipos }" @click="toggle('equipos')"><a href="#"><i class="la la-cubes"></i><span class="menu-title" >Equipos / Productos</span></a>
+            <ul class="menu-content" style="">
+              <li class="is-shown"><a href="#" class="menu-item" >Consultar</a></li>
+              <li class="is-shown"><a href="#" class="menu-item" >Registro</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
     <!--<router-view></router-view>-->
   </div>
 </template>
@@ -33,6 +43,30 @@
 
 export default {
   name: 'app',
+  data () {
+    return {
+      dropdowns:{
+        administracion:false,
+        equipos:false,
+      }
+    }
+  },
+  //COMPONENT METHODS
+  methods:{
+
+    toggle(menu){
+
+      let _this = this
+
+      if(_this.dropdowns[menu]){
+        _this.dropdowns[menu] = false;
+      }else{
+        _this.dropdowns[menu] = true;
+      }
+
+
+    }
+  },
 }
 
 </script>
@@ -41,6 +75,11 @@ export default {
 
 .navbar-header{
   background: #656565;
+
+}
+
+.main-menu.menu-dark .navigation > li.open > a{
+  border-right: 4px solid #FFE529;
 }
 
 
